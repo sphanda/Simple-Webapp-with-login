@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Basic Login System</title>
+		<meta http-equiv= "Content-Type" content="text/html; charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<br/> <br/> <br/>
+		<div class="container">
+			 <div class="jumbotron">
+				<p>
+					Raghavendra Rao B | 2020mt93537 | 2020MT93537@wilp.bits-pilani.ac.in
+				</p>
+				<p>
+				This application demonstrates basic login functionality. Allows register new users & validates credentials.
+				Registered users' list are stored in-memory. List of users are displayed in the console logs, as a reference.
+				Credentials are hashed using bcrypt, to ensure password safety.
+				</p>
+				
+				<p>
+				Only new users can be added to the application.
+				Once registered, application authenticates users with their credentials / password.
+				If invalid, user has an option to register afresh.
+				When application is brought down or restarted, registered users are all deleted.
+				</p>
+			</div>
+			
+			<form name="loginform" action="/login" method="POST">
+				<div class="form-group">
+					<label for="username">Enter user name</label>
+					<input type="text" class="form-control" id="username" name = "username" placeholder="enter user name" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Enter password</label>
+					<input type="password" class="form-control" id="password" name = "password" placeholder="enter password" required>
+				</div>
+			    <div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input" id="switch">
+					<label class="custom-control-label" for="switch">Remember me</label>
+				</div>
+				<br/>
+				<button class="btn btn-info" type="reset">Reset</button>
+				<button class="btn btn-primary" type="submit">Login</button>
+				<br/><br/>
+				<a href="./registration.html">Register as a new user</a>
+			</form>
+		</div>
+	</body>
+</html>
