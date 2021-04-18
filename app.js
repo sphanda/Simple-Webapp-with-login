@@ -10,7 +10,7 @@ var port = process.env.PORT || 3000,
     html = fs.readFileSync('index.html');
 
 var log = function(entry) {
-    fs.appendFileSync('/tmp/sample-login-system.log', new Date().toISOString() + ' - ' + entry + '\n');
+    fs.appendFileSync('/tmp/simple_login_app.log', new Date().toISOString() + ' - ' + entry + '\n');
 };
 
 const app = express();
@@ -38,9 +38,9 @@ app.post('/register', async(req, res) => {
 			users.push(newUser);
 			console.log('User list', users);
 			
-			res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./index.html'>Login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>");
+			res.send("<div align ='center'><h2>You have successfully signed up</h2></div><br><br><div align='center'><a href='./index.html'>Login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>");
 		} else {
-			res.send("<div align ='center'><h2>User already registered</h2></div><br><br><div align='center'><a href='./registration.html'>Register different user</a></div>");
+			res.send("<div align ='center'><h2>User is already registered</h2></div><br><br><div align='center'><a href='./registration.html'>Register different user</a></div>");
 		}
 	} catch {
 		res.send("Internal server error");
@@ -60,13 +60,13 @@ app.post("/login", async(req, res) => {
 				let usrname = foundUser.username;
 				res.send(`<div align ='center'><h2>Login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./index.html'>Logout</a></div>`);
 			} else {
-				res.send("<div align ='center'><h2>Login failed due to invalid username or password</h2></div><br><br><div align ='center'><a href='./index.html'>login again</a></div>");
+				res.send("<div align ='center'><h2>Invalid username or password. Please try again!!</h2></div><br><br><div align ='center'><a href='./index.html'>login again</a></div>");
 			}
 		} else {
 			let fakePass = `$2$0$2$1sdlfjdsklkskdkk`;
 			await bcrypt.compare(req.body.password, fakePass);
 			
-			res.send("<div align ='center'><h2>Login failed due to invalid username or password</h2></div><br><br><div align ='center'><a href='./index.html'>Login again</a></div>");
+			res.send("<div align ='center'><h2>Invalid username or password. Please try again!</h2></div><br><br><div align ='center'><a href='./index.html'>Login again</a></div>");
 		}
 		
 	} catch {
