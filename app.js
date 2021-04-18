@@ -78,4 +78,4 @@ app.post("/login", async(req, res) => {
 server.listen(port);
 
 // Put a friendly message on the terminal
-console.log('Server running at http://server:' + port + '/');
+console.log('Server running at http:/localhost:' + port + '/');
